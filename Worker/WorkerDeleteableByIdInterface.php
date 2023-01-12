@@ -16,15 +16,14 @@ declare(strict_types=1);
  *
  */
 
-namespace CoreShop\Component\Index\Service;
+namespace CoreShop\Component\Index\Worker;
 
-use CoreShop\Component\Index\Model\IndexableInterface;
+use CoreShop\Component\Index\Model\IndexInterface;
 
-interface IndexUpdaterServiceInterface
+interface WorkerDeleteableByIdInterface
 {
-    public function updateIndices(IndexableInterface $subject, bool $isVersionChange = false): void;
-
-    public function removeIndices(IndexableInterface $subject): void;
-
-    public function removeFromIndicesById(string $className, int $id): void;
+    /**
+     * deletes given element from index by id.
+     */
+    public function deleteFromIndexById(IndexInterface $index, int $id);
 }
